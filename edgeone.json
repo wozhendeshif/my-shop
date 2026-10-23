@@ -1,0 +1,6 @@
+{
+  "name": "my-shop",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist"
+}

@@ -1,0 +1,249 @@
+/* ============ 浅墨色 · 基础样式 ============ */
+:root {
+  /* 墨色系 */
+  --ink: #262a30;
+  --ink-soft: #4a515b;
+  --muted: #929aa4;
+  --muted-2: #b3bac2;
+  --line: #e7e4de;
+  --line-soft: #f0eee9;
+
+  /* 纸色 */
+  --paper: #f6f5f1;
+  --card: #ffffff;
+
+  /* 点缀色：主题青碧 21,131,129 */
+  --accent: #218381;
+  --accent-deep: #16625f;
+  --accent-soft: #7fb3b1;
+  --accent-bg: rgba(33, 131, 129, 0.09);
+  --price: #16625f;
+
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 2px rgba(38, 42, 48, 0.04), 0 8px 24px rgba(38, 42, 48, 0.05);
+  --shadow-md: 0 2px 6px rgba(38, 42, 48, 0.06), 0 18px 40px rgba(38, 42, 48, 0.09);
+  --shadow-lg: 0 30px 80px rgba(30, 34, 40, 0.22);
+  --ease: cubic-bezier(0.22, 0.68, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* 防止 iOS 横屏时自动放大字号 */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  /* 去掉移动端点击的高亮灰块 */
+  -webkit-tap-highlight-color: transparent;
+  /* 阻止滚动穿透导致的整页"橡皮筋"抖动 */
+  overscroll-behavior-y: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* 移动端点击区域最小 44px 的辅助：给可点元素留出触摸缓冲 */
+button,
+a,
+input {
+  touch-action: manipulation;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 吸顶头部会遮住锚点目标，给锚点区块留出偏移 */
+section[id] {
+  scroll-margin-top: 86px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1180px, 90vw);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 72px 0 20px;
+}
+
+/* 标题排版：克制、留白、细线 */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 18px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-head h2 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.section-head h2 em {
+  font-style: normal;
+  color: var(--accent);
+  margin-right: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  vertical-align: 3px;
+  font-weight: 500;
+}
+
+.section-head .sub {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+.section-head .meta {
+  color: var(--muted);
+  font-size: 12.5px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
+  background: #f1eee8;
+  color: var(--ink-soft);
+}
+
+.tag-accent {
+  background: rgba(154, 107, 63, 0.1);
+  color: var(--accent);
+}
+
+.price {
+  color: var(--price);
+  font-weight: 700;
+}
+
+.price i {
+  font-style: normal;
+  font-size: 0.62em;
+  margin-right: 1px;
+  font-weight: 600;
+}
+
+.origin {
+  color: var(--muted-2);
+  font-size: 12.5px;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+
+/* 滚动入场 */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d5d1c9;
+  border-radius: 8px;
+}
+
+::selection {
+  background: rgba(33, 131, 129, 0.18);
+}
+
+/* ============ 手机端（<= 780px）============ */
+@media (max-width: 780px) {
+  .container {
+    width: min(1180px, 92vw);
+  }
+
+  .section {
+    padding: 48px 0 12px;
+  }
+
+  /* 标题区竖排，避免副标题被 meta 挤出屏幕 */
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+  }
+
+  .section-head h2 {
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+
+  .section-head .meta {
+    font-size: 12px;
+  }
+
+  /* 输入类元素 >=16px，规避 iOS Safari 聚焦自动缩放 */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  /* 手机端头部为两行，锚点偏移随之加大 */
+  section[id] {
+    scroll-margin-top: 116px;
+  }
+
+  /* 滚动条在触屏上隐藏，减少视觉噪音 */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
