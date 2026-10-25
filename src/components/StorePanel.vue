@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { amapUrl, baiduUrl, baiduMapUrl, store } from '../data/store'
+import { amapUrl, amapMapUrl, store } from '../data/store'
 
 const emit = defineEmits(['close', 'copy'])
 
@@ -91,13 +91,12 @@ const rows = computed(() => [
 
               <div class="links">
                 <a class="btn" :href="amapUrl" target="_blank" rel="noopener">在高德地图打开</a>
-                <a class="btn ghost" :href="baiduUrl" target="_blank" rel="noopener">在百度地图打开</a>
               </div>
             </div>
 
             <div class="map">
-              <iframe :src="baiduMapUrl" title="门店位置地图" loading="lazy" referrerpolicy="no-referrer"></iframe>
-              <p class="tip">地图由百度地图提供，拖动可查看周边</p>
+              <iframe :src="amapMapUrl" title="门店位置地图" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              <p class="tip">地图由高德地图提供，点击标记可查看门店位置</p>
             </div>
           </div>
         </div>

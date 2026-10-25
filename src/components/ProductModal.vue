@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { serviceTags } from '../data/products'
 
 const props = defineProps({
@@ -8,15 +8,25 @@ const props = defineProps({
 
 const emit = defineEmits(['close', 'inquire'])
 
-function onKey(e) {
-  if (e.key === 'Escape') emit('close')
+// 商品图片放大预览
+const showImage = ref(false)
+function closeImage() {
+  showImage.value = false
 }
 
-// 仅在弹窗打开时锁定页面滚动
+function onKey(e) {
+  if (e.key === 'Escape') {
+    if (showImage.value) closeImage()
+    else emit('close')
+  }
+}
+
+// 仅在弹窗打开时锁定页面滚动；关闭弹窗时同时收起图片预览
 watch(
   () => props.model,
   (m) => {
     document.body.style.overflow = m ? 'hidden' : ''
+    if (!m) showImage.value = false
   }
 )
 
@@ -38,8 +48,12 @@ onBeforeUnmount(() => {
 
           <div class="dialog-body">
             <div class="left">
-              <div class="pic">
+              <div class="pic" role="button" tabindex="0" aria-label="查看大图" @click="showImage = true">
                 <img :src="model.img" :alt="model.name" />
+                <span class="zoom-hint">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
+                  点击放大
+                </span>
               </div>
               <p class="note">{{ serviceTags.join(' · ') }}</p>
             </div>
@@ -48,11 +62,6 @@ onBeforeUnmount(() => {
               <span class="cat">{{ model.categoryName }}</span>
               <h3>{{ model.name }}</h3>
               <p class="model-no">型号 {{ model.model }}<span class="dot">/</span>{{ model.sales }}</p>
-
-              <div class="price-row">
-                <span class="price"><i>¥</i>{{ model.price }}</span>
-                <span v-if="model.originPrice" class="origin">原价 ¥{{ model.originPrice }}</span>
-              </div>
 
               <p class="desc">{{ model.desc }}</p>
 
@@ -79,6 +88,16 @@ onBeforeUnmount(() => {
             </div>
           </div>
         </div>
+      </div>
+    </Transition>
+
+    <!-- 商品图片放大预览 -->
+    <Transition name="fade">
+      <div v-if="showImage && model" class="img-preview" @click="closeImage">
+        <img :src="model.img" :alt="model.name" @click.stop />
+        <button class="img-close" aria-label="关闭预览" @click="closeImage">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
       </div>
     </Transition>
   </Teleport>
@@ -138,6 +157,7 @@ onBeforeUnmount(() => {
 
 /* 图片尺寸收敛 */
 .pic {
+  position: relative;
   display: grid;
   place-items: center;
   height: 320px;
@@ -146,6 +166,29 @@ onBeforeUnmount(() => {
   background: linear-gradient(180deg, #faf9f6, #f3f2ee);
   border: 1px solid var(--line-soft);
   overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color 0.25s;
+}
+
+.pic:hover {
+  border-color: var(--accent-soft);
+}
+
+.zoom-hint {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  pointer-events: none;
 }
 
 .pic img {
@@ -162,6 +205,59 @@ onBeforeUnmount(() => {
   color: var(--muted);
   font-size: 11.5px;
   letter-spacing: 1px;
+}
+
+/* 商品图片放大预览（灯箱） */
+.img-preview {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(18, 20, 24, 0.92);
+  cursor: zoom-out;
+}
+
+.img-preview img {
+  max-width: 92vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.img-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.img-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .cat {
@@ -190,25 +286,6 @@ onBeforeUnmount(() => {
 .dot {
   margin: 0 8px;
   color: var(--line);
-}
-
-.price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  padding: 12px 16px;
-  margin: 14px 0 16px;
-  border-radius: var(--radius);
-  background: #faf8f4;
-  border: 1px solid var(--line-soft);
-}
-
-.price-row .price {
-  font-size: 27px;
-}
-
-.price-row .price i {
-  font-size: 14px;
 }
 
 .desc {
@@ -335,15 +412,6 @@ onBeforeUnmount(() => {
 
   .right h3 {
     font-size: 18px;
-  }
-
-  .price-row {
-    padding: 10px 14px;
-    margin: 12px 0 14px;
-  }
-
-  .price-row .price {
-    font-size: 24px;
   }
 
   /* 规格表：标签列收窄、字号下调，避免 360px 下横向溢出 */

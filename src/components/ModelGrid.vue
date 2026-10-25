@@ -50,10 +50,6 @@ const active = computed(() => categories.find((c) => c.id === props.activeId) ||
           <div class="body">
             <h3>{{ m.name }}</h3>
             <p class="model">型号 {{ m.model }}</p>
-            <div class="foot">
-              <span class="price"><i>¥</i>{{ m.price }}</span>
-              <span v-if="m.originPrice" class="origin">¥{{ m.originPrice }}</span>
-            </div>
             <p class="sales">{{ m.sales }} · 门店有货</p>
           </div>
 
@@ -203,21 +199,6 @@ const active = computed(() => categories.find((c) => c.id === props.activeId) ||
   letter-spacing: 0.5px;
 }
 
-.foot {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.price {
-  font-size: 19px;
-}
-
-.price i {
-  font-size: 12px;
-}
-
 .sales {
   color: var(--muted-2);
   font-size: 11.5px;
@@ -260,10 +241,6 @@ const active = computed(() => categories.find((c) => c.id === props.activeId) ||
   .body h3 {
     font-size: 13px;
     min-height: 39px;
-  }
-
-  .price {
-    font-size: 17px;
   }
 
   .sales {
