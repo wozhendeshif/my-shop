@@ -69,11 +69,16 @@ function handleSearch(keyword) {
 </script>
 
 <template>
+    <!-- 头部搜索框 -->
   <SiteHeader @search="handleSearch" @store="openStore" />
 
   <main>
+
+    <!-- 首页轮播图 -->
     <HeroCarousel @view="viewModel" @browse="browseCategory" />
+    <!-- 分类 -->
     <CategoryGrid :active-id="activeCategoryId" @select="selectCategory" />
+    <!-- 产品列表 -->
     <ModelGrid :active-id="activeCategoryId" @select="selectCategory" @view="viewModel" />
   </main>
 

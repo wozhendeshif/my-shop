@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { serviceTags } from '../data/products'
 
 const props = defineProps({
@@ -21,13 +21,26 @@ function onKey(e) {
   }
 }
 
-// 仅在弹窗打开时锁定页面滚动；关闭弹窗时同时收起图片预览
+// 商品图集（多图优先，单图回退）
+const gallery = computed(() => {
+  const m = props.model
+  if (!m) return []
+  return Array.isArray(m.images) && m.images.length ? m.images : [m.img]
+})
+const activeImg = ref('')
+
+// 仅在弹窗打开时锁定页面滚动；切换商品时重置当前查看的图
 watch(
   () => props.model,
   (m) => {
     document.body.style.overflow = m ? 'hidden' : ''
-    if (!m) showImage.value = false
-  }
+    if (!m) {
+      showImage.value = false
+    } else {
+      activeImg.value = gallery.value[0] || m.img
+    }
+  },
+  { immediate: true }
 )
 
 onMounted(() => window.addEventListener('keydown', onKey))
@@ -49,12 +62,27 @@ onBeforeUnmount(() => {
           <div class="dialog-body">
             <div class="left">
               <div class="pic" role="button" tabindex="0" aria-label="查看大图" @click="showImage = true">
-                <img :src="model.img" :alt="model.name" />
+                <img :src="activeImg" :alt="model.name" />
                 <span class="zoom-hint">
                   <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
                   点击放大
                 </span>
               </div>
+
+              <div class="thumbs" v-if="gallery.length > 1">
+                <button
+                  v-for="(src, i) in gallery"
+                  :key="i"
+                  type="button"
+                  class="thumb"
+                  :class="{ active: src === activeImg }"
+                  :aria-label="'查看第 ' + (i + 1) + ' 张图'"
+                  @click="activeImg = src"
+                >
+                  <img :src="src" :alt="model.name + ' 图' + (i + 1)" />
+                </button>
+              </div>
+
               <p class="note">{{ serviceTags.join(' · ') }}</p>
             </div>
 
@@ -94,7 +122,7 @@ onBeforeUnmount(() => {
     <!-- 商品图片放大预览 -->
     <Transition name="fade">
       <div v-if="showImage && model" class="img-preview" @click="closeImage">
-        <img :src="model.img" :alt="model.name" @click.stop />
+        <img :src="activeImg" :alt="model.name" @click.stop />
         <button class="img-close" aria-label="关闭预览" @click="closeImage">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
@@ -197,6 +225,43 @@ onBeforeUnmount(() => {
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+/* 多图缩略图 */
+.thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  padding: 4px;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.thumb.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(33, 131, 129, 0.18);
 }
 
 .note {
@@ -404,6 +469,16 @@ onBeforeUnmount(() => {
 
   .pic img {
     max-height: 180px;
+  }
+
+  .thumbs {
+    margin-top: 10px;
+    gap: 6px;
+  }
+
+  .thumb {
+    width: 48px;
+    height: 48px;
   }
 
   .features {

@@ -30,17 +30,12 @@ const im = {
   induction, // 电磁炉
   steam, // 电蒸锅
   hotpot, // 电火锅
-  stew, // 电炖锅
   pan, // 电饼铛
   cookware, // 炊具/炒锅
-  fan, // 电风扇
   heater, // 取暖器/油汀
   dispenser, // 饮水机
   pipeline, // 管线机/茶吧机
   ewh, // 电热水器
-  gwh, // 燃气热水器
-  ashp: IMG + '1_37252437952701184.png', // 空气能热水器（暂无本地图）
-  purifier, // 净水机
 }
 
 const service = ['正品行货', '全国联保', '送货上门', '七天无理由']
@@ -50,7 +45,7 @@ export const categories = [
     id: 'kettle',
     name: '电热水壶',
     en: 'Kettle',
-    icon: im.kettle,
+    icon: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@3ec9cf480505d77ede0a447bb659a163ab68d310/images/kettle/MK-SH15Colour102.png',
     desc: '双层防烫 · 速热恒温',
     models: [
       {
@@ -59,7 +54,7 @@ export const categories = [
         model: 'MK-HJ1512',
         price: 79,
         originPrice: 99,
-        img: im.kettle,
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@3ec9cf480505d77ede0a447bb659a163ab68d310/images/kettle/MK-SH15Colour102.png',
         tags: ['双层防烫', '1.7L大容量', '304不锈钢'],
         sales: '月售 320+',
         hot: true,
@@ -73,7 +68,7 @@ export const categories = [
         model: 'MK-HJ1705',
         price: 139,
         originPrice: 179,
-        img: im.kettle,
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@3ec9cf480505d77ede0a447bb659a163ab68d310/images/kettle/MK-SH15Colour102.png',
         tags: ['多段恒温', '数显屏', '婴儿冲奶'],
         sales: '月售 210+',
         desc: '45℃/55℃/85℃ 三段恒温自由切换，宝宝冲奶、泡茶、冲咖啡随时取用，温度看得见。',
@@ -86,7 +81,7 @@ export const categories = [
         model: 'MK-SP50E802',
         price: 269,
         originPrice: 329,
-        img: im.bottle,
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@3ec9cf480505d77ede0a447bb659a163ab68d310/images/kettle/MK-SH15Colour102.png',
         tags: ['5L大容量', '电动出水', '除氯再沸腾'],
         sales: '月售 120+',
         desc: '5L 超大容量，一键电动出水，全家一天的饮用热水轻松搞定，除氯再沸腾口感更甘甜。',
@@ -103,44 +98,26 @@ export const categories = [
     desc: '速热恒温 · 一级能效',
     models: [
       {
-        id: 'f6032-ja9',
-        name: '美的电热水器 F6032-JA9(HE)',
-        model: 'F6032-JA9(HE)',
+        id: 'F05-15A1(S)',
+        name: '美的厨宝 F05-15A1(S)',
+        model: 'F05-15A1(S)',
         price: 1599,
         originPrice: 1999,
         img: im.ewh,
-        tags: ['60L', '一级能效', '活水洗'],
-        sales: '月售 180+',
-        hot: true,
-        desc: '3300W 变频速热，一级能效更省电；活水换洗技术，告别死水陈垢，洗得更健康。',
-        features: ['3300W 双管变频速热', '新一级能效，省电看得见', '专利活水技术，阻垢更健康', 'APP 远程预约洗浴', '8 年内胆质保'],
-        specs: [['容量', '60L'], ['额定功率', '3300W'], ['能效等级', '新一级'], ['加热体', '双管变频'], ['安装方式', '壁挂式'], ['保修', '内胆 8 年']],
-      },
-      {
-        id: 'jsq30-rx9',
-        name: '美的燃气热水器 JSQ30-RX9 16L',
-        model: 'JSQ30-RX9',
-        price: 2499,
-        originPrice: 2999,
-        img: im.gwh,
-        tags: ['16L', '零冷水', '恒温'],
-        sales: '月售 150+',
-        desc: '16L 零冷水巡航，打开即热无需等待；水气双调恒温，全屋多点用水温度不打折。',
-        features: ['零冷水巡航，即开即热', '水气双调，±0.5℃ 恒温', '16L 大升数，全屋多点供水', '智能变升，节能省气', '防冻保护，北方严冬无忧'],
-        specs: [['升数', '16L'], ['额定热负荷', '30kW'], ['恒温方式', '水气双调'], ['零冷水', '支持'], ['排气方式', '强排式'], ['保修', '整机 3 年']],
-      },
-      {
-        id: 'rsj-150',
-        name: '美的空气能热水器 150L',
-        model: 'RSJ-15/150RDN3',
-        price: 5999,
-        originPrice: 6999,
-        img: im.ashp,
-        tags: ['空气能', '一级能效', '节能70%'],
-        sales: '月售 40+',
-        desc: '空气能热泵制热，耗电仅为电热水器的 1/4，一次加热全家畅享，阴雨天也能稳定供热。',
-        features: ['热泵制热，节能高达 70%', '150L 大容量，全家连续洗浴', 'E+蓝钻内胆，抗垢耐用', '智能除霜，低温照样给力', 'APP 远程控制'],
-        specs: [['容量', '150L'], ['制热量', '3800W'], ['能效等级', '一级'], ['水温范围', '35-65℃'], ['安装方式', '落地式'], ['保修', '主机 3 年']],
+        images: ['https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/ewh/F05-15A1(S).png',
+           ],
+        tags: ['小厨宝', '5升容量', '速热', '厨下隐藏安装'],
+        sales: '月售 300+（示例数据，可按实际替换）',
+        desc: '5升黄金容量，专为厨房洗涤设计，告别冬天洗碗洗菜冻手；1500W大功率速热，热水源源不断；搭载防电墙技术与水电分离设计，多重安全防护；加厚保温层长效锁温；小巧机身，完美隐藏于水槽下方橱柜，不占空间。',
+        features: ['1500W大功率速热', '5L小巧不占空间', '防电墙安全防护', '搪瓷内胆耐腐蚀', '厨下/厨上灵活安装'],
+        specs: [
+          ['额定功率', '1500W'],
+          ['产品容量', '5L'],
+          ['内胆材质', '搪瓷内胆（或不锈钢内胆，视实际配置）'],
+          ['安全技术', '防电墙技术 / 防干烧 / 超温保护'],
+          ['安装方式', '厨下/厨上（支持上出水/下出水）'],
+          ['保修', '整机 3 年 / 内胆 5 年（视品牌政策）']
+        ]
       },
     ],
   },
@@ -152,12 +129,12 @@ export const categories = [
     desc: 'IH 电磁加热 · 0涂层',
     models: [
       {
-        id: 'fb40simple301',
-        name: '美的 IH 电饭煲 FB40Simple301',
-        model: 'FB40Simple301',
+        id: '4052R',
+        name: '美的 IH 电饭煲 4052R',
+        model: '4052R',
         price: 399,
         originPrice: 499,
-        img: im.cooker,
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/cooker/4052R.jpg',
         tags: ['IH电磁加热', '4L', '0涂层'],
         sales: '月售 260+',
         desc: 'IH 电磁加热环绕包裹米粒，沸腾更充分，米饭粒粒饱满；纯钛 0 涂层内胆，健康更安心。',
@@ -241,54 +218,6 @@ export const categories = [
     ],
   },
   {
-    id: 'soymilk',
-    name: '豆浆机',
-    en: 'Soymilk Maker',
-    icon: im.blender,
-    desc: '免滤破壁 · 干豆直打',
-    models: [
-      {
-        id: 'dj10b-easy201',
-        name: '美的豆浆机 DJ10B-Easy201',
-        model: 'DJ10B-Easy201',
-        price: 249,
-        originPrice: 299,
-        img: im.blender,
-        tags: ['免过滤', '干豆直打', '1L容量'],
-        sales: '月售 140+',
-        desc: '干豆直接打，免浸泡免过滤，一杯香浓豆浆 20 分钟搞定，早餐省时更省心。',
-        features: ['干豆直打免浸泡', '无网免过滤设计', '四叶精钢刀头', '防溢智能温控', '自动清洗程序'],
-        specs: [['容量', '1L'], ['额定功率', '800W'], ['刀头', '四叶精钢'], ['功能', '豆浆/米糊/果蔬'], ['产品尺寸', '185×185×310mm'], ['保修', '整机 1 年']],
-      },
-      {
-        id: 'dj12b-easy102',
-        name: '美的豆浆机 DJ12B-Easy102',
-        model: 'DJ12B-Easy102',
-        price: 199,
-        originPrice: 249,
-        img: im.blender,
-        tags: ['1.2L', '多功能', '预约'],
-        sales: '月售 220+',
-        desc: '豆浆、米糊、五谷、果蔬汁四大功能，一键预约早晨自动打好，睡醒即饮。',
-        features: ['1.2L 3-4 人份量', '四大功能一键切换', '8 小时智能预约', '食品级不锈钢内胆', '沸腾防溢控制'],
-        specs: [['容量', '1.2L'], ['额定功率', '800W'], ['刀头', '四叶精钢'], ['预约', '8 小时'], ['产品尺寸', '190×190×330mm'], ['保修', '整机 1 年']],
-      },
-      {
-        id: 'dj10b-plus',
-        name: '美的破壁豆浆机 DJ10B-Plus',
-        model: 'DJ10B-Plus',
-        price: 299,
-        originPrice: 379,
-        img: im.blender,
-        tags: ['低音破壁', '免手洗', '保温'],
-        sales: '月售 85+',
-        desc: '低音降噪破壁技术，早上打豆浆不吵人；打完自动清洗，还自带保温，随时喝到温热的。',
-        features: ['降噪腔体，低音运行', '自动清洗免手洗', '打完自动保温 2 小时', '6 叶钢刀高速破壁', '浓豆浆/稀豆浆可选'],
-        specs: [['容量', '1L'], ['额定功率', '1000W'], ['转速', '30000rpm'], ['噪音', '≤65dB'], ['产品尺寸', '200×200×340mm'], ['保修', '整机 1 年']],
-      },
-    ],
-  },
-  {
     id: 'blender',
     name: '破壁机',
     en: 'High-speed Blender',
@@ -296,17 +225,24 @@ export const categories = [
     desc: '高速破壁 · 静音降噪',
     models: [
       {
-        id: 'mj-pb13e235',
-        name: '美的破壁机 MJ-PB13E235',
-        model: 'MJ-PB13E235',
+        id: '2501B',
+        name: '美的搅拌机 2501B',
+        model: '2501B',
         price: 499,
         originPrice: 599,
-        img: im.blender,
-        tags: ['静音罩', '热饮功能', '8叶刀'],
-        sales: '月售 130+',
-        desc: '八叶精钢刀头 30000 转高速破壁，释放食材全营养；配静音罩，晨间使用不扰邻。',
-        features: ['8 叶精钢刀头高速破壁', '降噪静音罩设计', '加热豆浆/浓汤/粥品', '12 大功能菜单', '高温自动清洗'],
-        specs: [['容量', '1.75L'], ['额定功率', '1200W'], ['转速', '30000rpm'], ['功能', '12 大菜单'], ['产品尺寸', '215×215×430mm'], ['保修', '整机 1 年']],
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/blender/2501B.jpg',
+        tags: ['破壁机', '静音降噪', '一键清洗'],
+        sales: '月售 450+',
+        desc: '大功率高速电机搭配4叶精钢刀头，瞬间击碎食材细胞壁，饮品口感细腻无渣；加厚高硼硅玻璃杯体，耐冷耐热；支持一键自清洁与多重降噪设计。',
+        features: ['高速破壁细腻无渣',  '加厚高硼硅玻璃杯', '一键自清洁'],
+        specs: [
+          ['额定功率', '加热800W + 搅拌1000W'],
+          ['产品容量', '1.2L'],
+          ['电机转速', '约 40000转/分'],
+          ['刀头配置', '4叶精钢钝刀'],
+          ['杯体材质', '高硼硅玻璃'],
+          ['保修', '整机 1 年']
+        ]
       },
       {
         id: 'mj-pb12x3-101',
@@ -392,194 +328,124 @@ export const categories = [
     desc: '当季热卖 · 全屋速暖',
     models: [
       {
-        id: 'ndk20-17h1',
-        name: '美的踢脚线取暖器 NDK20-17H1',
-        model: 'NDK20-17H1',
+        // 已改信息未改图片
+        id: 'HYX22N',
+        name: '美的13片油汀 HYX22N',
+        model: 'HYX22N',
         price: 399,
         originPrice: 499,
-        img: im.heater,
-        tags: ['踢脚线', '整屋循环暖', '防水IPX4'],
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/heater/HYX22N.png',
+        tags: ['油汀', '整屋循环暖', '防水IPX4'],
         sales: '月售 280+',
         hot: true,
-        desc: '踢脚线式设计贴墙不占地，热空气沿墙面自下而上循环，全屋均匀升温；浴室也能放心用。',
-        features: ['踢脚线低空设计', '自然对流整屋循环', 'IPX4 防水，浴室可用', '智能恒温省电', '遥控+APP 控制'],
-        specs: [['额定功率', '2000W'], ['加热方式', '铝片石墨烯对流'], ['防水等级', 'IPX4'], ['控制', '遥控/APP'], ['产品尺寸', '960×150×230mm'], ['保修', '整机 1 年']],
+        desc: '镂空散热片，快速升温；双尾片安全防烫；中石化导热油；倾倒自动断电；双重过热保护',
+        features: ['镂空散热设计', '自然对流整屋循环', '过热自动断电', '智能恒温省电', '小巧机身 方便放置'],
+        specs: [['额定功率', '2200W'], ['加热方式', '鱼骨油路技术'], ['防摔摔倒', '摔倒自动断电'], ['环保油漆材料', '无毒无害'], ['产品尺寸', '280×435×640mm'], ['保修', '整机 1 年']],
       },
       {
-        id: 'nfj18-x2',
-        name: '美的暖风机 NFJ18-X2',
-        model: 'NFJ18-X2',
+        id: '033-410MM',
+        name: '小太阳 033-410MM',
+        model: '033-410MM',
         price: 249,
         originPrice: 299,
-        img: im.heater,
-        tags: ['3秒速热', '暖风', '桌面两用'],
-        sales: '月售 360+',
+        img: ['https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/heater/yangzi033-410MM-1.jpg',
+          'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/heater/yangzi033-410MM-2.jpg',
+        'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/heater/yangzi033-410MM-3.jpg',
+      
+        ],
+        tags: ['小太阳', '局部定向取暖', '即开即热'],
+        sales: '月售 120+',
         hot: true,
-        desc: 'PTC 陶瓷发热 3 秒出热风，开机制暖不用等；台地两用，办公桌旁、床头随手放。',
-        features: ['PTC 陶瓷 3 秒速热', '冷暖两用送风', '台式/立式两用', '倾倒自动断电', '低噪运行不扰眠'],
-        specs: [['额定功率', '1800W'], ['发热体', 'PTC 陶瓷'], ['送风', '冷暖两档'], ['保护', '倾倒断电'], ['产品尺寸', '200×200×330mm'], ['保修', '整机 1 年']],
+        desc: '反射罩定向聚热，开机几秒即热；适合书桌旁、沙发边单人局部取暖；倾倒自动断电、过热保护，小巧便携；仅适合1-2㎡定点取暖，使用时远离可燃物。',
+        features: ['定向反射聚热', '即开即热', '防倾倒自动断电', '过热保护', '小巧便携'],
+        specs: [
+        ['额定功率', '800W/1000W（按型号）'],
+        ['加热方式', '红外辐射反射式'],
+        ['防摔倒', '倾倒自动断电'],
+        ['外壳材料', '阻燃材料'],
+        ['产品尺寸', '约 300×250×450mm'],
+        ['保修', '整机 1 年']  ]
       },
       {
-        id: 'nty20-17lw',
-        name: '美的电热膜取暖器 NTY20-17LW',
-        model: 'NTY20-17LW',
+        id: 'T-019',
+        name: '小太阳 T-019',
+        model: 'T-019',
         price: 459,
         originPrice: 559,
-        img: im.heater,
-        tags: ['电热膜', '无风无声', '速热'],
-        sales: '月售 95+',
-        desc: '电热膜黑科技加热，无风机运行零噪音，卧室整夜取暖也能安然入睡。',
-        features: ['电热膜加热升温快', '无风机零噪音', '表面低温不烫手', '加湿盒设计不干燥', '万向脚轮轻松移动'],
-        specs: [['额定功率', '2000W'], ['加热方式', '硅晶电热膜'], ['噪音', '0dB 无风机'], ['附加', '加湿盒'], ['产品尺寸', '780×120×560mm'], ['保修', '整机 1 年']],
-      },
-    ],
-  },
-  {
-    id: 'oilheater',
-    name: '油汀',
-    en: 'Oil-filled Radiator',
-    icon: im.heater,
-    desc: '当季热卖 · 恒温暖而不燥',
-    models: [
-      {
-        id: 'nps20-16bw',
-        name: '美的电油汀 NPS20-16BW（13片）',
-        model: 'NPS20-16BW',
-        price: 429,
-        originPrice: 529,
-        img: im.heater,
-        tags: ['13片', '烘衣架', '恒温'],
-        sales: '月售 240+',
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/heater/yangziT-019.jpg',
+        tags: ['小太阳', '局部定向取暖', '即开即热'],
+        sales: '月售 120+（示例数据，可按实际替换）',
         hot: true,
-        desc: '13 片加大散热片，热油循环导热均匀，暖而不燥不吹灰；标配烘衣架，梅雨冬天衣鞋速干。',
-        features: ['13 片散热片导热均匀', '导热油循环制热无风感', '标配烘衣架+加湿盒', '三档功率调节', '万向脚轮+绕线收纳'],
-        specs: [['额定功率', '2200W'], ['散热片', '13 片'], ['加热介质', '导热油'], ['附件', '烘衣架/加湿盒'], ['产品尺寸', '560×240×680mm'], ['保修', '整机 1 年']],
+        desc: '反射罩定向聚热，开机几秒即热；适合书桌旁、沙发边单人局部取暖；倾倒自动断电、过热保护，小巧便携；仅适合1-2㎡定点取暖，使用时远离可燃物。',
+        features: ['定向反射聚热', '即开即热', '防倾倒自动断电', '过热保护', '小巧便携'],
+        specs: [
+        ['额定功率', '800W/1000W（按型号）'],
+        ['加热方式', '红外辐射反射式'],
+        ['防摔倒', '倾倒自动断电'],
+        ['外壳材料', '阻燃材料'],
+        ['产品尺寸', '约 300×250×450mm'],
+        ['保修', '整机 1 年']  ]  
       },
       {
-        id: 'nps22-17dw',
-        name: '美的电油汀 NPS22-17DW（15片）',
-        model: 'NPS22-17DW',
-        price: 499,
-        originPrice: 629,
-        img: im.heater,
-        tags: ['15片', '智能温控', 'APP控制'],
-        sales: '月售 130+',
-        hot: true,
-        desc: '15 片超大散热面积，大客厅也能暖得透；智能温控自动开关机，回家前手机远程预热。',
-        features: ['15 片大散热面积', 'APP 远程定时预热', '智能恒温自动断续', '防烫外壳双重隔热', '童锁+倾倒断电'],
-        specs: [['额定功率', '2500W'], ['散热片', '15 片'], ['控制', 'APP/触屏'], ['保护', '童锁/倾倒断电'], ['产品尺寸', '600×240×700mm'], ['保修', '整机 1 年']],
-      },
-      {
-        id: 'nps10-15f',
-        name: '美的电油汀 NPS10-15F（11片）',
-        model: 'NPS10-15F',
-        price: 329,
-        originPrice: 399,
-        img: im.heater,
-        tags: ['11片', '卧室优选', '静音'],
-        sales: '月售 170+',
-        hot: true,
-        desc: '11 片紧凑机身专为卧室设计，无风机静音制暖，夜间安睡一整晚，电费也省心。',
-        features: ['11 片紧凑省空间', '静音无风睡眠友好', '三档可调功率', '过热保护', '隐藏式收纳绕线盘'],
-        specs: [['额定功率', '1800W'], ['散热片', '11 片'], ['噪音', '0dB 无风机'], ['档位', '三档'], ['产品尺寸', '500×240×640mm'], ['保修', '整机 1 年']],
-      },
-    ],
-  },
-  {
-    id: 'fan',
-    name: '风扇',
-    en: 'Fan',
-    icon: im.fan,
-    desc: '直流变频 · 柔风静音',
-    models: [
-      {
-        id: 'fs40-13cr',
-        name: '美的落地扇 FS40-13CR',
-        model: 'FS40-13CR',
-        price: 159,
-        originPrice: 199,
-        img: im.fan,
-        tags: ['五叶柔风', '3档风速', '广角摇头'],
-        sales: '月售 400+',
-        desc: '五叶柔风设计风感细腻不头痛，广角摇头覆盖全屋，夏天家庭必备口碑款。',
-        features: ['五叶 PP 柔风扇叶', '3 档风速调节', '90° 广角摇头', '高度四档可调', '网罩免工具拆装'],
-        specs: [['扇叶直径', '40cm'], ['额定功率', '50W'], ['风速', '3 档'], ['摇头', '90°'], ['产品尺寸', '450×450×1250mm'], ['保修', '整机 1 年']],
-      },
-      {
-        id: 'sas35ma',
-        name: '美的无叶风扇 AMS150I-TBV',
-        model: 'AMS150I-TBV',
-        price: 599,
-        originPrice: 799,
-        img: im.fan,
-        tags: ['无叶安全', '静音', '空气净化'],
-        sales: '月售 70+',
-        desc: '无叶出风安全不夹手，有娃家庭放心选；内置滤网净化送风，凉风更洁净。',
-        features: ['无叶设计安全防夹手', '环形倍增气流出风', '内置滤网净化空气', '10 档风速触控调节', '磁吸遥控器收纳'],
-        specs: [['出风量', '280m³/h'], ['额定功率', '35W'], ['风速', '10 档'], ['滤网', '可拆洗'], ['产品尺寸', '280×280×950mm'], ['保修', '整机 1 年']],
-      },
-      {
-        id: 'fts30-10a',
-        name: '美的台扇 FTS30-10A',
-        model: 'FTS30-10A',
-        price: 99,
-        originPrice: 129,
-        img: im.fan,
-        tags: ['台式', '办公', '轻巧'],
-        sales: '月售 260+',
-        desc: '台式小机身，桌面、床头随手摆放；一键旋钮操作，长辈也会用。',
-        features: ['30cm 台式小巧机身', '2 档风速旋钮调节', '俯仰角度自由调节', '稳固底座不晃动', '低噪电机安睡无忧'],
-        specs: [['扇叶直径', '30cm'], ['额定功率', '40W'], ['风速', '2 档'], ['俯仰', '±30°'], ['产品尺寸', '350×300×500mm'], ['保修', '整机 1 年']],
-      },
-    ],
-  },
-  {
-    id: 'aircooler',
-    name: '空调扇',
-    en: 'Air Cooler',
-    icon: im.fan,
-    desc: '加水制冷 · 冷暖两用',
-    models: [
-      {
-        id: 'ac100-18br',
-        name: '美的空调扇 AC100-18BR',
-        model: 'AC100-18BR',
-        price: 399,
-        originPrice: 499,
-        img: im.fan,
-        tags: ['冰晶制冷', '遥控', '负离子'],
-        sales: '月售 150+',
-        desc: '冰晶盒冷冻后放入，出风温度直降 3-5℃；负离子净化，吹出来的风更清爽干净。',
-        features: ['冰晶制冷快速降温', '负离子净化送风', '冷暖两用四季适用', '遥控+定时', '大容量水箱 6L'],
-        specs: [['水箱容量', '6L'], ['额定功率', '65W'], ['模式', '制冷/送风/加湿'], ['定时', '8 小时'], ['产品尺寸', '360×320×850mm'], ['保修', '整机 1 年']],
-      },
-      {
-        id: 'ac120-16cw',
-        name: '美的冷暖空调扇 AC120-16CW',
-        model: 'AC120-16CW',
+        id: 'T-025',
+        name: '小太阳 T-025',
+        model: 'T-025',
         price: 459,
         originPrice: 559,
-        img: im.fan,
-        tags: ['冷暖两用', '暖风', '冬季适用'],
-        sales: '月售 80+',
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/heater/yangziT-025.jpg',
+        tags: ['小太阳', '局部定向取暖', '即开即热'],
+        sales: '月售 120+',
         hot: true,
-        desc: '夏天送凉风、冬天送暖风，一台顶两台；PTC 暖风快速升温，过渡季节取暖首选。',
-        features: ['冷暖双模式一机两用', 'PTC 陶瓷暖风速热', '加湿降尘出风舒适', '3 档风量调节', '脚轮设计轻松移动'],
-        specs: [['额定功率', '制冷65W/制热2000W'], ['水箱容量', '5L'], ['模式', '冷风/暖风/加湿'], ['定时', '7.5 小时'], ['产品尺寸', '380×340×880mm'], ['保修', '整机 1 年']],
+        desc: '反射罩定向聚热，开机几秒即热；适合书桌旁、沙发边单人局部取暖；倾倒自动断电、过热保护，小巧便携；仅适合1-2㎡定点取暖，使用时远离可燃物。',
+        features: ['定向反射聚热', '即开即热', '防倾倒自动断电', '过热保护', '小巧便携'],
+        specs: [
+        ['额定功率', '800W/1000W（按型号）'],
+        ['加热方式', '红外辐射反射式'],
+        ['防摔倒', '倾倒自动断电'],
+        ['外壳材料', '阻燃材料'],
+        ['产品尺寸', '约 300×250×450mm'],
+        ['保修', '整机 1 年']  ]  
       },
       {
-        id: 'ac200-c',
-        name: '美的单冷空调扇 AC200-C',
-        model: 'AC200-C',
-        price: 329,
-        originPrice: 399,
-        img: im.fan,
-        tags: ['单冷', '省电', '大水箱'],
-        sales: '月售 110+',
-        desc: '水冷蒸发降温，功率仅电空调的 1/10，租房宿舍省电纳凉首选。',
-        features: ['水冷蒸发物理降温', '功耗仅 60W 省电', '8L 超大水箱长效使用', '上下左右立体送风', '缺水提示保护'],
-        specs: [['水箱容量', '8L'], ['额定功率', '60W'], ['模式', '制冷/送风'], ['定时', '8 小时'], ['产品尺寸', '370×330×900mm'], ['保修', '整机 1 年']],
+        id: 'shuinuan',
+        name: '水暖一体机',
+        model: 'T-shuinuan',
+        price: 459,
+        originPrice: 559,
+        img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/heater/shuinuan.jpg',
+        tags: ['水暖一体机', '整屋循环暖', '不干燥'],
+        sales: '月售 150+（示例数据，可按实际替换）',
+        desc: '水暖加热不干燥，金属面板防烫易清洁；内置水电分离加热管，水循环自然对流整屋升温；提供14/16/18柱多规格可选；底部万向轮设计移动便捷。',
+        features: ['水电分离安全加热', '水循环整屋对流', '不干燥不闷热', '金属防烫面板', '万向轮移动方便'],
+        specs: [
+          ['额定功率', '视柱数而定（如1800W-2500W）'],
+          ['加热方式', '内置加热管水循环'],
+          ['防摔倒', '防干烧/倾倒自动断电（视具体配置）'],
+          ['外壳材料', '金属面板'],
+          ['产品尺寸', '视柱数而定（14/16/18柱可选）'],
+          ['保修', '整机 1 年']
+        ]
       },
+      {
+      id: 'HD2201',
+      name: '欧式空气对流电暖炉 HD2201',
+      model: 'HD2201',
+      price: 299, // 示例价格，可根据实际情况修改
+      originPrice: 399, // 示例价格，可根据实际情况修改
+      img: 'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@505a68db75ef484398088bdc130ab445714fbbd8/images/HD2201.png',
+      tags: ['欧式对流', '石墨烯发热', '低噪无光', '整屋升温'],
+      sales: '月售 320+',
+      desc: '碳金云母片发热，开机5秒即热，大面积快速供热；欧式空气对流设计，静音无光无氧耗，不扰眠更舒适；附带创新一体式合金烘衣架；1100W/2200W两档功率调节，适用10-25㎡空间。',
+      features: ['碳金云母快速发热', '静音无光不扰眠', '两档功率调节', '一体式合金烘衣架', '自然对流整屋循环'],
+      specs: [
+        ['额定功率', '2200W（1100W/2200W两档可调）'],
+        ['加热方式', '碳金云母片发热（空气对流）'],
+        ['适用面积', '10㎡-25㎡（实验室条件下）'],
+        ['运行噪音', '静音运行'],
+        ['特殊功能', '一体式合金烘衣架'],
+        ['保修', '整机 1 年']
+      ]
+    }
     ],
   },
   {
@@ -621,7 +487,7 @@ export const categories = [
         model: 'MRO1891-100G',
         price: 1299,
         originPrice: 1599,
-        img: im.purifier,
+        img: im.dispenser,
         tags: ['RO反渗透', '100G大通量', '厨下式'],
         sales: '月售 90+',
         desc: 'RO 反渗透深度过滤，直饮级水质；100G 大通量接水不排队，一体化水路防漏更安心。',
@@ -638,18 +504,27 @@ export const categories = [
     desc: '多段控温 · 下置水桶',
     models: [
       {
-        id: 'yr1325s-w',
-        name: '美的茶吧机 YR1325S-W',
-        model: 'YR1325S-W',
+        id: 'K602',
+        name: '奥克斯茶吧机 K602',
+        model: 'K602',
         price: 599,
         originPrice: 729,
-        img: im.pipeline,
-        tags: ['多段控温', '下置水桶', '童锁'],
-        sales: '月售 120+',
-        hot: true,
-        desc: '泡茶、冲奶、直饮多段温度随心选；下置水桶+隐藏收纳，客厅一放就是一道风景。',
-        features: ['五段温度精准控温', '下置式水桶更省力', '隐藏式杯托收纳', '童锁防烫更安全', '双层保温层持久锁温'],
-        specs: [['类型', '立式茶吧机'], ['温度档位', '5 段'], ['水桶', '下置式'], ['功率', '600W'], ['产品尺寸', '320×320×1050mm'], ['保修', '整机 1 年']],
+        img: ['https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/pipeline/K602.jpg',
+              'https://cdn.jsdelivr.net/gh/wozhendeshif/my-shop@417893689bb687a6fd1c450642c40ee90082bafa/images/pipeline/K602-2.jpg' ],
+        tags: ['茶吧机', '三合一操控', '长效保温', '防干烧'],
+        sales: '月售 180+',
+        desc: '奥克斯K602新款茶吧机，枪灰/燕麦灰双色可选。触控彩屏、遥控、按键三合一操控，一键启动更便捷。304不锈钢水壶支持多档调温（2-24小时保温），搭配经典直筒保温壶（1-24小时保温）。具备无水禁启、防溢水防干烧多重安全防护，满足全家健康饮水需求。',
+        features: ['彩屏/遥控/按键三合一', '304不锈钢水壶', '多档精准调温', '双壶长效保温', '防溢水防干烧'],
+        specs: [
+          ['产品型号', 'K602'],
+          ['颜色分类', '枪灰 / 燕麦灰'],
+          ['操控方式', '触控彩屏 + 遥控 + 按键'],
+          ['水壶材质', '304不锈钢'],
+          ['保温时长', '烧水壶2-24小时 / 保温壶1-24小时'],
+          ['裸机尺寸', '370×325×860mm（加靠背总高1220mm）'],
+          ['包装尺寸', '410×375×925mm'],
+          ['保修', '整机 1 年']
+        ],
       },
       {
         id: 'mk-he3001',
@@ -780,8 +655,25 @@ export const categories = [
   },
 ]
 
+// 多图支持：把每个商品的 img（字符串或数组）与 images（数组）归一化，
+// 保证始终同时存在 images（详情弹窗缩略图用）和 img（卡片/轮播单图用）。
+// 这样无论数据里只写 img、把 img 写成数组、还是只写 images，都能正确展示。
+categories.forEach((c) => {
+  c.models.forEach((m) => {
+    const list = []
+    if (Array.isArray(m.images)) list.push(...m.images)
+    if (Array.isArray(m.img)) list.push(...m.img)
+    else if (m.img) list.push(m.img)
+    const dedup = [...new Set(list)]
+    if (dedup.length) {
+      m.images = dedup
+      m.img = dedup[0]
+    }
+  })
+})
+
 // 当季热卖（轮播展示）
-export const seasonalIds = ['ndk20-17h1', 'nps20-16bw', 'mk-hj1512', 'mc-dy26easy201']
+export const seasonalIds = ['HYX22N','033-410MM','T-019','shuinuan','HD2201']
 
 export const allModels = categories.flatMap((c) =>
   c.models.map((m) => ({ ...m, categoryId: c.id, categoryName: c.name }))
