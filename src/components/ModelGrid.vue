@@ -141,15 +141,15 @@ const active = computed(() => categories.find((c) => c.id === props.activeId) ||
   position: relative;
   display: grid;
   place-items: center;
-  height: 132px;
-  padding: 12px;
+  height: 220px;
+  padding: 12px 8px;
   background: linear-gradient(180deg, #faf9f6, #f4f3ef);
   border-bottom: 1px solid var(--line-soft);
   overflow: hidden;
 }
 
 .pic img {
-  max-width: 82%;
+  max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
@@ -231,7 +231,7 @@ const active = computed(() => categories.find((c) => c.id === props.activeId) ||
   }
 
   .pic {
-    height: 108px;
+    height: 176px;
   }
 
   .body {
